@@ -45,6 +45,7 @@
 		496E0957283E6CA500DAD8BE /* WttchToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WttchToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		496E095B283E6CA500DAD8BE /* WttchToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WttchToolsUITests.swift; sourceTree = "<group>"; };
 		496E095D283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WttchToolsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		496E096A283E6CAE00DAD8BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		496E0933283E6CA400DAD8BE = {
 			isa = PBXGroup;
 			children = (
+				496E096A283E6CAE00DAD8BE /* README.md */,
 				496E093E283E6CA400DAD8BE /* WttchTools */,
 				496E0950283E6CA500DAD8BE /* WttchToolsTests */,
 				496E095A283E6CA500DAD8BE /* WttchToolsUITests */,
