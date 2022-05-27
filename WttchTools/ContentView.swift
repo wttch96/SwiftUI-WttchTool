@@ -7,10 +7,44 @@
 
 import SwiftUI
 
+import AppKit
+
+extension NSTextView {
+    open override var frame: CGRect {
+        didSet {
+//            backgroundColor = .clear //<<here clear
+//            drawsBackground = true
+            textContainerInset = NSSize(width: 8, height: 10)
+        }
+
+    }
+}
+
 struct ContentView: View {
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack(alignment: .leading) {
+                List {
+                ForEach(toolMenus) { menu in
+                    DisclosureGroup(content: {
+                        ForEach(menu.children ?? []) { subMenu in
+                            NavigationLink(destination: {
+                                if let navView = subMenu.view {
+                                    navView
+                                }
+                            }, label: {
+                                MenuItemView(menuItem: subMenu)
+                            })
+                        }
+                    }, label: {
+                        Text(menu.title)
+                    })
+                }
+                }
+                Spacer()
+            }
+        }
     }
 }
 
