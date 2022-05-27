@@ -22,25 +22,20 @@ struct UnderCaseCamelCaseView: View {
                 Button(action: {
                     resultText = sourceText.camelCase2UnderCase()
                 }, label: {
-                    Text("驼峰转")
-                    Text("下划线")
-                        .foregroundColor(.accentColor)
+                    Text("驼峰转下划线")
                 })
                 Button(action: {
                     resultText = sourceText.underCase2CamelCase()
                 }, label: {
-                    Text("下划线转")
-                    Text("驼峰")
-                        .foregroundColor(.accentColor)
+                    Text("下划线转驼峰")
                 })
                 
                 Button(action: {
-                    let tmpText = sourceText
                     sourceText = resultText
-                    resultText = tmpText
+                    resultText = ""
                 }, label: {
                     Text("交换")
-                    Image(systemName: "arrow.up.arrow.down")
+                    Image(systemName: "arrow.up")
                 })
                 Spacer()
                 
