@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import CryptoKit
 
 ///
 /// 转换为下划线命名的正则, 分两组, 使用正则将 aA 转换为 a_a
@@ -43,5 +43,45 @@ extension String {
         // range: 替换范围
         // withTemplate: 替换模版, $1_$2 将第一个匹配的分组和第二个匹配分组命中的串使用 "_" 连接
         return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "_$1").lowercased()
+    }
+    
+    
+    
+    ///
+    /// 将字符串转换为 base64 编码
+    /// 
+    /// - Parameters:
+    ///   - fromEncoding: 字符串转换为 Data 用的编码格式，默认 utf8
+    /// - Returns: 字符串通过 fromEncoding 编码格式编码后转换成的 base64 字符串
+    func base64EncodedString(fromEncoding: String.Encoding = .utf8) -> String {
+        let data = self.data(using: fromEncoding) ?? Data()
+        // let key = "wttch".data(using: .utf8) ?? Data()
+        // let hmacData = HMAC<Insecure.MD5>.authenticationCode(for: sourceData, using: SymmetricKey(data: key))
+        // return hmacData.map{
+        //    String(format: "%02hhx", $0)
+        // }.joined()
+        return data.base64EncodedString()
+    }
+    
+    ///
+    /// 将 base64 编码的字符串转换为原始字符串
+    ///
+    /// - Parameter toEncoding: 解码后转换成字符串使用的编码格式
+    /// - Returns: 字符串通过 toEncoding 解码后转换的字符串
+    func base64DecodedString(toEncoding: String.Encoding = .utf8) -> String {
+        let data = Data(base64Encoded: self) ?? Data()
+        
+        return String(data: data, encoding: toEncoding) ?? ""
+    }
+    
+    
+    
+    ///
+    /// 转换成大写或者小写形式
+    ///
+    /// - Parameter isUpper: 是否大写？true 大写，false 小写
+    /// - Returns: 转换后的字符串
+    func cased(isUpper: Bool) -> String {
+        isUpper ? self.uppercased() : self.lowercased()
     }
 }

@@ -15,10 +15,11 @@
 		496E095C283E6CA500DAD8BE /* WttchToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E095B283E6CA500DAD8BE /* WttchToolsUITests.swift */; };
 		496E095E283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E095D283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift */; };
 		496E096C283E74D600DAD8BE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E096B283E74D600DAD8BE /* MenuItem.swift */; };
-		496E096F283E8D5400DAD8BE /* HashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E096E283E8D5400DAD8BE /* HashView.swift */; };
+		496E096F283E8D5400DAD8BE /* Base64View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E096E283E8D5400DAD8BE /* Base64View.swift */; };
 		498861FD283F74D2005826A1 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498861FC283F74D2005826A1 /* TextEditorView.swift */; };
 		498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */; };
 		49886202283F991B005826A1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49886201283F991B005826A1 /* StringExtension.swift */; };
+		498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */; };
 		49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1482D28413D5A0010C6FA /* MenuItemView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +54,11 @@
 		496E095D283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WttchToolsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		496E096A283E6CAE00DAD8BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		496E096B283E74D600DAD8BE /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
-		496E096E283E8D5400DAD8BE /* HashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashView.swift; sourceTree = "<group>"; };
+		496E096E283E8D5400DAD8BE /* Base64View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64View.swift; sourceTree = "<group>"; };
 		498861FC283F74D2005826A1 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCaseCamelCaseView.swift; sourceTree = "<group>"; };
 		49886201283F991B005826A1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTextButton.swift; sourceTree = "<group>"; };
 		49A1482D28413D5A0010C6FA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,10 +151,11 @@
 		496E096D283E8D4100DAD8BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				496E096E283E8D5400DAD8BE /* HashView.swift */,
+				496E096E283E8D5400DAD8BE /* Base64View.swift */,
 				498861FC283F74D2005826A1 /* TextEditorView.swift */,
 				498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */,
 				49A1482D28413D5A0010C6FA /* MenuItemView.swift */,
+				498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,10 +306,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496E096F283E8D5400DAD8BE /* HashView.swift in Sources */,
+				496E096F283E8D5400DAD8BE /* Base64View.swift in Sources */,
 				49886202283F991B005826A1 /* StringExtension.swift in Sources */,
 				496E096C283E74D600DAD8BE /* MenuItem.swift in Sources */,
 				498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */,
+				498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */,
 				49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */,
 				496E0942283E6CA400DAD8BE /* ContentView.swift in Sources */,
 				498861FD283F74D2005826A1 /* TextEditorView.swift in Sources */,

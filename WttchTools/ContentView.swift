@@ -38,7 +38,7 @@ struct ContentView: View {
                             })
                         }
                     }, label: {
-                        Text(menu.title)
+                        MenuItemView(menuItem: menu)
                     })
                 }
                 }

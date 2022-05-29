@@ -19,8 +19,8 @@ struct MenuItem: Identifiable {
 
     var view: AnyView?
     
-    init(title: String, children: [MenuItem]) {
-        self.icon = nil
+    init(icon: String? = nil, title: String, children: [MenuItem]) {
+        self.icon = icon
         self.title = title
         self.children = children
         self.view = nil
@@ -39,11 +39,11 @@ struct MenuItem: Identifiable {
 /// 菜单的目录结构
 ///
 let toolMenus: [MenuItem] = [
-    MenuItem(title: "文本处理", children: [
+    MenuItem(icon: "text.alignleft", title: "文本处理", children: [
         MenuItem(icon: "xmark", title: "下划线/驼峰互转", view: UnderCaseCamelCaseView())
     ]),
-    MenuItem(title: "编码", children: [
-        MenuItem(icon: "list.dash", title: "base64", view: HashView()),
+    MenuItem(icon: "option", title: "编码", children: [
+        MenuItem(icon: "list.dash", title: "base64", view: Base64View()),
         MenuItem(icon: "list.dash", title: "URL", view: Text("URL")),
         MenuItem(icon: "list.dash", title: "URI", view: Text("URI"))
     ]),
