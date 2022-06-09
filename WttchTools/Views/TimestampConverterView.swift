@@ -40,6 +40,14 @@ struct TimestampConverterView: View {
                     Label("test\(index)", systemImage: "").tag("\(index)")
                 }
             })
+            TextField("", text: $inputTime)
+                .disabled(true)
+                .textSelection(.enabled)
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "doc.on.doc.fill")
+            })
             
             Spacer()
         }

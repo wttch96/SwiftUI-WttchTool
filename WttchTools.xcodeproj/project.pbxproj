@@ -93,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490D7F092851D9F800D7BD7E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				498861FC283F74D2005826A1 /* TextEditorView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		496E0933283E6CA400DAD8BE = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +125,7 @@
 		496E093E283E6CA400DAD8BE /* WttchTools */ = {
 			isa = PBXGroup;
 			children = (
+				490D7F092851D9F800D7BD7E /* Components */,
 				49886203283FD2AC005826A1 /* Models */,
 				49886200283F990B005826A1 /* Utils */,
 				496E096D283E8D4100DAD8BE /* Views */,
@@ -159,7 +168,6 @@
 			children = (
 				4946BEEE284FC15F00C4116D /* TextFieldView.swift */,
 				496E096E283E8D5400DAD8BE /* Base64View.swift */,
-				498861FC283F74D2005826A1 /* TextEditorView.swift */,
 				498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */,
 				49A1482D28413D5A0010C6FA /* MenuItemView.swift */,
 				498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */,

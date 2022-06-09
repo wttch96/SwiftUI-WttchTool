@@ -23,10 +23,6 @@ struct Base64View: View {
     var body: some View {
         VStack {
             VStack {
-                TextEditor(text: $resultText)
-                    .background(.red)
-                    .cornerRadius(16)
-                    .border(.cyan)
                 TextEditorView(text: $sourceText)
                 HStack {
                     Button(action: base64Encoding, label: {
@@ -60,6 +56,7 @@ struct Base64View: View {
                 TextEditorView(text: $resultText)
             }
         }
+        .padding()
     }
     
     // MARK: 行为
