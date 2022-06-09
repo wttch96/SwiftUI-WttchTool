@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490D7F082850E82C00D7BD7E /* TimestampConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D7F072850E82C00D7BD7E /* TimestampConverterView.swift */; };
+		4946BEEB284FBF8800C4116D /* DigestViewswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946BEEA284FBF8800C4116D /* DigestViewswift.swift */; };
+		4946BEEF284FC15F00C4116D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946BEEE284FC15F00C4116D /* TextFieldView.swift */; };
 		496E0940283E6CA400DAD8BE /* WttchToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E093F283E6CA400DAD8BE /* WttchToolsApp.swift */; };
 		496E0942283E6CA400DAD8BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E0941283E6CA400DAD8BE /* ContentView.swift */; };
 		496E0944283E6CA500DAD8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496E0943283E6CA500DAD8BE /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		490D7F072850E82C00D7BD7E /* TimestampConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampConverterView.swift; sourceTree = "<group>"; };
+		4946BEEA284FBF8800C4116D /* DigestViewswift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestViewswift.swift; sourceTree = "<group>"; };
+		4946BEEE284FC15F00C4116D /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		496E093C283E6CA400DAD8BE /* WttchTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WttchTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496E093F283E6CA400DAD8BE /* WttchToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WttchToolsApp.swift; sourceTree = "<group>"; };
 		496E0941283E6CA400DAD8BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,11 +157,14 @@
 		496E096D283E8D4100DAD8BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4946BEEE284FC15F00C4116D /* TextFieldView.swift */,
 				496E096E283E8D5400DAD8BE /* Base64View.swift */,
 				498861FC283F74D2005826A1 /* TextEditorView.swift */,
 				498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */,
 				49A1482D28413D5A0010C6FA /* MenuItemView.swift */,
 				498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */,
+				4946BEEA284FBF8800C4116D /* DigestViewswift.swift */,
+				490D7F072850E82C00D7BD7E /* TimestampConverterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,8 +315,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4946BEEB284FBF8800C4116D /* DigestViewswift.swift in Sources */,
 				496E096F283E8D5400DAD8BE /* Base64View.swift in Sources */,
+				490D7F082850E82C00D7BD7E /* TimestampConverterView.swift in Sources */,
 				49886202283F991B005826A1 /* StringExtension.swift in Sources */,
+				4946BEEF284FC15F00C4116D /* TextFieldView.swift in Sources */,
 				496E096C283E74D600DAD8BE /* MenuItem.swift in Sources */,
 				498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */,
 				498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */,
@@ -401,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -456,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

@@ -9,16 +9,16 @@ import SwiftUI
 
 import AppKit
 
-extension NSTextView {
-    open override var frame: CGRect {
-        didSet {
-//            backgroundColor = .clear //<<here clear
-//            drawsBackground = true
-            textContainerInset = NSSize(width: 8, height: 10)
-        }
-
-    }
-}
+//extension NSTextView {
+//    open override var frame: CGRect {
+//        didSet {
+////            backgroundColor = .clear //<<here clear
+////            drawsBackground = true
+//            textContainerInset = NSSize(width: 8, height: 10)
+//        }
+//
+//    }
+//}
 
 struct ContentView: View {
     
@@ -26,21 +26,20 @@ struct ContentView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                ForEach(toolMenus) { menu in
-                    DisclosureGroup(content: {
-                        ForEach(menu.children ?? []) { subMenu in
-                            NavigationLink(destination: {
-                                if let navView = subMenu.view {
-                                    navView
-                                }
-                            }, label: {
-                                MenuItemView(menuItem: subMenu)
-                            })
-                        }
-                    }, label: {
-                        MenuItemView(menuItem: menu)
-                    })
-                }
+                    ForEach(toolMenus) { menu in
+                        Section(menu.title, content: {
+                            ForEach(menu.children ?? []) { subMenu in
+                                NavigationLink(destination: {
+                                    if let navView = subMenu.view {
+                                        navView
+                                    }
+                                }, label: {
+                                    MenuItemView(menuItem: subMenu)
+                                })
+                            }
+                        })
+                        .font(.headline)
+                    }
                 }
                 Spacer()
             }

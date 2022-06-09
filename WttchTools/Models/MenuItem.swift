@@ -40,6 +40,7 @@ struct MenuItem: Identifiable {
 ///
 let toolMenus: [MenuItem] = [
     MenuItem(icon: "text.alignleft", title: "文本处理", children: [
+        MenuItem(icon: "clock.fill", title: "时间转换", view: TimestampConverterView()),
         MenuItem(icon: "xmark", title: "下划线/驼峰互转", view: UnderCaseCamelCaseView())
     ]),
     MenuItem(icon: "option", title: "编码", children: [

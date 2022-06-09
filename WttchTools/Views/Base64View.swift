@@ -15,12 +15,18 @@ struct Base64View: View {
     
     @State var sourceText = ""
     @State var resultText = ""
+    @State var keyStr = ""
+    @State var showHmac = false
 
     @State var showAlert = false
     
     var body: some View {
         VStack {
             VStack {
+                TextEditor(text: $resultText)
+                    .background(.red)
+                    .cornerRadius(16)
+                    .border(.cyan)
                 TextEditorView(text: $sourceText)
                 HStack {
                     Button(action: base64Encoding, label: {
@@ -44,6 +50,13 @@ struct Base64View: View {
                     })
                     SwitchTextButton(sourceText: $sourceText, resultText: $resultText)
                 }
+                HStack {
+                    Toggle("HMAC加密", isOn: $showHmac)
+                }
+                if showHmac {
+                    TextEditorView(text: $keyStr)
+                        .frame(maxHeight: 80)
+                }
                 TextEditorView(text: $resultText)
             }
         }
@@ -55,7 +68,12 @@ struct Base64View: View {
     /// 进行 base64 编码
     ///
     func base64Encoding() {
-        resultText = sourceText.base64EncodedString()
+        let data = sourceText.data(using: .utf8) ?? Data()
+        let key = keyStr.data(using: .utf8) ?? Data()
+        let hmacData = HMAC<SHA256>.authenticationCode(for: data, using: SymmetricKey(data: key))
+        resultText =  hmacData.map{
+            String(format: "%02hhx", $0)
+        }.joined()
     }
     
     ///

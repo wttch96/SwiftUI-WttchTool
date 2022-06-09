@@ -1,19 +1,21 @@
 //
-//  TextEditorView.swift
+//  TextFieldView.swift
 //  WttchTools
 //
-//  Created by Wttch on 2022/5/26.
+//  Created by Wttch on 2022/6/8.
 //
 
 import SwiftUI
 
-struct TextEditorView: View {
+struct TextFieldView: View {
     @Binding var text: String
+    
+    var title: String
     
     var body: some View {
         VStack {
 
-            TextEditor(text: $text)
+            TextField(title, text: $text)
                 .font(.headline)
                 .foregroundColor(.white)
                 .tint(.pink)
