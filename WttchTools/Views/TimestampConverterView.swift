@@ -15,11 +15,15 @@ struct TimestampConverterView: View {
     var body: some View {
         VStack {
             HStack {
+                Text("输入:")
                 Button("现在", action: {
                     inputTime = Date.now.ISO8601Format()
                 })
                 Button("从粘贴板", action: {
-                    
+                    let pasteboard = NSPasteboard.general
+                    if let string = pasteboard.string(forType: .string) {
+                        inputTime = string.trimmingCharacters(in: .whitespacesAndNewlines)
+                    }
                 })
                 Button(action: {
                     
@@ -52,6 +56,7 @@ struct TimestampConverterView: View {
             Spacer()
         }
         .padding()
+        .navigationTitle("时间转换")
     }
 }
 

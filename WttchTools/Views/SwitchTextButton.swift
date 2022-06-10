@@ -14,8 +14,9 @@ struct SwitchTextButton: View {
     
     var body: some View {
         Button(action: switchText, label: {
-            Image(systemName: "arrow.up")
-            Text("交换")
+            Text("作为输入")
+            Image(systemName: "arrowshape.turn.up.left.fill")
+                .rotationEffect(Angle(degrees: 90))
         })
     }
     

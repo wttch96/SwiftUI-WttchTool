@@ -13,71 +13,120 @@ import CryptoKit
 ///
 struct Base64View: View {
     
+    // MARK: 状态
     @State var sourceText = ""
     @State var resultText = ""
     @State var keyStr = ""
     @State var showHmac = false
 
     @State var showAlert = false
+    @State var action = Action.encode
+    
+    enum Action: String {
+        case decode = "decode"
+        case encode = "encode"
+    }
     
     var body: some View {
-        VStack {
-            VStack {
-                TextEditorView(text: $sourceText)
-                HStack {
-                    Button(action: base64Encoding, label: {
-                        Image(systemName: "arrowtriangle.right.and.line.vertical.and.arrowtriangle.left.fill")
-                        Text("Base64编码")
-                    })
-                    Button(action: base64Decoding, label: {
-                        Image(systemName: "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right.fill")
-                        Text("Base64解码")
-                    })
-                    
-                    Button("复制加密结果") {
-                        showAlert = true
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.clearContents()
-                        pasteboard.setString(resultText, forType: .string)
+        GeometryReader {geometry in
+            VSplitView {
+                VStack {
+                    HStack {
+                        Text("输入:")
+                        immediatelyButton
+                        fromPasteboardButton
+                        Spacer()
+                        actionPicker
                     }
-                    .popover(isPresented: $showAlert, content: {
-                        Text("已保存!")
-                            .padding()
-                    })
-                    SwitchTextButton(sourceText: $sourceText, resultText: $resultText)
+    //                HStack {
+    //                    Toggle("HMAC", isOn: $useHmac)
+    //                        .toggleStyle(SwitchToggleStyle())
+    //
+    //                    if useHmac {
+    //                        TextField("xxx", text: $sourceText)
+    //                            .frame(width: 480)
+    //                    }
+    //
+    //                    Spacer()
+    //                }
+                    TextEditorView(text: $sourceText)
+                        .onChange(of: sourceText) { newValue in
+                            doAction()
+                        }
                 }
-                HStack {
-                    Toggle("HMAC加密", isOn: $showHmac)
+                .padding()
+                .frame(height: geometry.size.height / 2)
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button("复制加密结果") {
+                            showAlert = true
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.clearContents()
+                            pasteboard.setString(resultText, forType: .string)
+                        }
+                        .popover(isPresented: $showAlert, content: {
+                            Text("已保存!")
+                                .padding()
+                        })
+                        SwitchTextButton(sourceText: $sourceText, resultText: $resultText)
+                    }
+                    TextEditorView(text: $resultText)
                 }
-                if showHmac {
-                    TextEditorView(text: $keyStr)
-                        .frame(maxHeight: 80)
-                }
-                TextEditorView(text: $resultText)
+                .padding()
             }
         }
-        .padding()
     }
+    // MARK: 视图
+    
+    var immediatelyButton: some View {
+        Button(action: {
+            let pasteboard = NSPasteboard.general
+            sourceText = pasteboard.string(forType: .string) ?? ""
+            doAction()
+            pasteboard.setString(resultText, forType: .string)
+        }, label: {
+            Image(systemName: "bolt.fill")
+        })
+        .help("读取粘贴板进行转换，并将结果复制到粘贴板")
+    }
+    
+    var fromPasteboardButton: some View {
+        Button(action: {
+            let pasteboard = NSPasteboard.general
+            sourceText = pasteboard.string(forType: .string) ?? ""
+        }, label: {
+            Text("从粘贴板")
+        })
+    }
+    
+    var actionPicker: some View {
+        Picker(selection: $action, label: Text("")) {
+            Label("Base64编码", systemImage: "rectangle.compress.vertical").tag(Action.encode)
+            Label("Base64解码", systemImage: "rectangle.expend.vertical").tag(Action.decode)
+        }
+        .pickerStyle(RadioGroupPickerStyle())
+        .horizontalRadioGroupLayout()
+        .onChange(of: action) { newValue in
+            doAction()
+        }
+    }
+    
     
     // MARK: 行为
     
-    ///
-    /// 进行 base64 编码
-    ///
-    func base64Encoding() {
-        let data = sourceText.data(using: .utf8) ?? Data()
-        let key = keyStr.data(using: .utf8) ?? Data()
-        let hmacData = HMAC<SHA256>.authenticationCode(for: data, using: SymmetricKey(data: key))
-        resultText =  hmacData.map{
-            String(format: "%02hhx", $0)
-        }.joined()
-    }
-    
-    ///
-    /// 进行 base64 解码
-    ///
-    func base64Decoding() {
-        resultText = sourceText.base64DecodedString()
+    func doAction() {
+        if action == Action.encode {
+            resultText = sourceText.base64EncodedString()
+//            let data = sourceText.data(using: .utf8) ?? Data()
+//            let key = keyStr.data(using: .utf8) ?? Data()
+//            let hmacData = HMAC<SHA256>.authenticationCode(for: data, using: SymmetricKey(data: key))
+//            resultText =  hmacData.map{
+//                String(format: "%02hhx", $0)
+//            }.joined()
+        } else {
+            resultText = sourceText.base64DecodedString()
+        }
     }
 }
 
