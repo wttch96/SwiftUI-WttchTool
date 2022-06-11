@@ -13,37 +13,58 @@ import SwiftUI
 struct UnderCaseCamelCaseView: View {
     @State private var sourceText: String = ""
     @State private var resultText: String = ""
+    @State private var action = ActionTag.toUnderCase
+    
+    private enum ActionTag: String, RadioTag {
+        case toUnderCase = "toUnderCase"
+        case toCamelCase = "toCamelCase"
+    }
+    
+    private var actionItems = [
+        RadioItem(text: "转下划线", tag: ActionTag.toUnderCase),
+        RadioItem(text: "转驼峰", tag: ActionTag.toCamelCase),
+    ]
     
     var body: some View {
-        VStack {
-            TextEditorView(text: $sourceText)
-                .frame(height: 200)
-            HStack {
-                Button(action: {
-                    resultText = sourceText.camelCase2UnderCase()
-                }, label: {
-                    Text("驼峰转下划线")
-                })
-                Button(action: {
-                    resultText = sourceText.underCase2CamelCase()
-                }, label: {
-                    Text("下划线转驼峰")
-                })
-                
-                Button(action: {
-                    sourceText = resultText
-                    resultText = ""
-                }, label: {
-                    Text("交换")
-                    Image(systemName: "arrow.up")
-                })
-                Spacer()
-                
-                Image(systemName: "arrow.down")
+        GeometryReader { geometry in
+            VSplitView {
+                VStack {
+                    HStack {
+                        Text("输入:")
+                        ImmediatelyButton(source: $sourceText, target: $resultText)
+                        FromPasteboardButton(text: $sourceText)
+                        Spacer()
+                        RadioPicker(items: actionItems, selection: $action)
+                            .onChange(of: action) { newValue in
+                                onAction()
+                            }
+                    }
+                    TextEditorView(text: $sourceText)
+                        .onChange(of: sourceText) { newValue in
+                            onAction()
+                        }
+                }
+                .padding()
+                .frame(height: geometry.size.height / 2)
+                VStack {
+                    HStack {
+                        Spacer()
+                        ToPasteboardButton(text: $resultText)
+                        SwitchTextButton(sourceText: $sourceText, resultText: $resultText)
+                    }
+                    TextEditorView(text: $resultText)
+                }
+                .padding()
             }
-            .padding(.horizontal, 30)
-            TextEditorView(text: $resultText)
-                .frame(height: 200)
+        }
+    }
+    
+    // MARK: 函数
+    func onAction() {
+        if action == .toUnderCase {
+            resultText = sourceText.camelCase2UnderCase()
+        } else {
+            resultText = sourceText.underCase2CamelCase()
         }
     }
 }

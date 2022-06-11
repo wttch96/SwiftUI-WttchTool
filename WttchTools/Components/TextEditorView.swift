@@ -53,7 +53,7 @@ struct TextEditorView_Previews: PreviewProvider {
     ///
     /// 直接预览时无法使用 @State 修饰器，所以使用一层包装
     ///
-    struct TextEditorViewWrapper: View {
+    struct PreviewsWrapper: View {
         @State var input = ""
         var body: some View {
             TextEditorView(text: $input)
@@ -61,6 +61,6 @@ struct TextEditorView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        TextEditorViewWrapper()
+        PreviewsWrapper()
     }
 }

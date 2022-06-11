@@ -33,8 +33,8 @@ struct Base64View: View {
                 VStack {
                     HStack {
                         Text("输入:")
-                        immediatelyButton
-                        fromPasteboardButton
+                        ImmediatelyButton(source: $sourceText, target: $resultText)
+                        FromPasteboardButton(text: $sourceText)
                         Spacer()
                         actionPicker
                     }
@@ -59,16 +59,7 @@ struct Base64View: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button("复制加密结果") {
-                            showAlert = true
-                            let pasteboard = NSPasteboard.general
-                            pasteboard.clearContents()
-                            pasteboard.setString(resultText, forType: .string)
-                        }
-                        .popover(isPresented: $showAlert, content: {
-                            Text("已保存!")
-                                .padding()
-                        })
+                        ToPasteboardButton(text: $resultText)
                         SwitchTextButton(sourceText: $sourceText, resultText: $resultText)
                     }
                     TextEditorView(text: $resultText)
@@ -77,29 +68,8 @@ struct Base64View: View {
             }
         }
     }
+
     // MARK: 视图
-    
-    var immediatelyButton: some View {
-        Button(action: {
-            let pasteboard = NSPasteboard.general
-            sourceText = pasteboard.string(forType: .string) ?? ""
-            doAction()
-            pasteboard.setString(resultText, forType: .string)
-        }, label: {
-            Image(systemName: "bolt.fill")
-        })
-        .help("读取粘贴板进行转换，并将结果复制到粘贴板")
-    }
-    
-    var fromPasteboardButton: some View {
-        Button(action: {
-            let pasteboard = NSPasteboard.general
-            sourceText = pasteboard.string(forType: .string) ?? ""
-        }, label: {
-            Text("从粘贴板")
-        })
-    }
-    
     var actionPicker: some View {
         Picker(selection: $action, label: Text("")) {
             Label("Base64编码", systemImage: "rectangle.compress.vertical").tag(Action.encode)
