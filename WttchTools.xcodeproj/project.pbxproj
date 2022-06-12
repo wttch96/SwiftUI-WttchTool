@@ -15,6 +15,7 @@
 		495C77C72854E34E001C393F /* RadioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C77C62854E34E001C393F /* RadioItem.swift */; };
 		495C77C92854EA97001C393F /* RadioPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C77C82854EA97001C393F /* RadioPicker.swift */; };
 		495C77CB2854F78B001C393F /* ToPasteboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C77CA2854F78B001C393F /* ToPasteboardButton.swift */; };
+		495C77CD285623D6001C393F /* MD5ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C77CC285623D6001C393F /* MD5ToolView.swift */; };
 		496E0940283E6CA400DAD8BE /* WttchToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E093F283E6CA400DAD8BE /* WttchToolsApp.swift */; };
 		496E0942283E6CA400DAD8BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E0941283E6CA400DAD8BE /* ContentView.swift */; };
 		496E0944283E6CA500DAD8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496E0943283E6CA500DAD8BE /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		495C77C62854E34E001C393F /* RadioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioItem.swift; sourceTree = "<group>"; };
 		495C77C82854EA97001C393F /* RadioPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPicker.swift; sourceTree = "<group>"; };
 		495C77CA2854F78B001C393F /* ToPasteboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPasteboardButton.swift; sourceTree = "<group>"; };
+		495C77CC285623D6001C393F /* MD5ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5ToolView.swift; sourceTree = "<group>"; };
 		496E093C283E6CA400DAD8BE /* WttchTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WttchTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496E093F283E6CA400DAD8BE /* WttchToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WttchToolsApp.swift; sourceTree = "<group>"; };
 		496E0941283E6CA400DAD8BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				49A1482D28413D5A0010C6FA /* MenuItemView.swift */,
 				4946BEEA284FBF8800C4116D /* DigestViewswift.swift */,
 				490D7F072850E82C00D7BD7E /* TimestampConverterView.swift */,
+				495C77CC285623D6001C393F /* MD5ToolView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				4946BEEF284FC15F00C4116D /* TextFieldView.swift in Sources */,
 				495C77C32854CE1A001C393F /* ImmediatelyButton.swift in Sources */,
 				496E096C283E74D600DAD8BE /* MenuItem.swift in Sources */,
+				495C77CD285623D6001C393F /* MD5ToolView.swift in Sources */,
 				495C77C92854EA97001C393F /* RadioPicker.swift in Sources */,
 				498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */,
 				498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */,

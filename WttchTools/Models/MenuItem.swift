@@ -44,13 +44,13 @@ let toolMenus: [MenuItem] = [
         MenuItem(icon: "xmark", title: "下划线/驼峰互转", view: UnderCaseCamelCaseView())
     ]),
     MenuItem(icon: "option", title: "编码", children: [
-        MenuItem(icon: "list.dash", title: "base64", view: Base64View()),
+        MenuItem(icon: "list.dash", title: "Base64", view: Base64View()),
         MenuItem(icon: "list.dash", title: "URL", view: Text("URL")),
         MenuItem(icon: "list.dash", title: "URI", view: Text("URI"))
     ]),
     MenuItem(title: "摘要", children: [
         // md5, hmacMD5
-        MenuItem(icon: "list.dash", title: "MD5", view: Text("MD5")),
+        MenuItem(icon: "list.dash", title: "MD5", view: MD5ToolView()),
         // sha1, sha224, sha256, sha384, sha512,
         // with hmac
         MenuItem(icon: "list.dash", title: "散列/哈希", view: Text("SHA"))

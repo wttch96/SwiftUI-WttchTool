@@ -88,12 +88,6 @@ struct Base64View: View {
     func doAction() {
         if action == Action.encode {
             resultText = sourceText.base64EncodedString()
-//            let data = sourceText.data(using: .utf8) ?? Data()
-//            let key = keyStr.data(using: .utf8) ?? Data()
-//            let hmacData = HMAC<SHA256>.authenticationCode(for: data, using: SymmetricKey(data: key))
-//            resultText =  hmacData.map{
-//                String(format: "%02hhx", $0)
-//            }.joined()
         } else {
             resultText = sourceText.base64DecodedString()
         }
