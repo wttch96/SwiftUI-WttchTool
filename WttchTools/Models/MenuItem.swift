@@ -56,7 +56,7 @@ let toolMenus: [MenuItem] = [
         MenuItem(icon: "list.dash", title: "散列/哈希", view: Text("SHA"))
     ]),
     MenuItem(title: "对称加密", children: [
-        MenuItem(icon: "list.dash", title: "AES", view: Text("AES")),
+        MenuItem(icon: "list.dash", title: "AES", view: AESEncryptView()),
         MenuItem(icon: "list.dash", title: "DES", view: Text("DES")),
         MenuItem(icon: "list.dash", title: "RC4", view: Text("RC4")),
         MenuItem(icon: "list.dash", title: "Rabbit", view: Text("Rabbit")),

@@ -12,6 +12,9 @@ struct TimestampConverterView: View {
     @State var inputTime = ""
     @State var select = ""
     
+    @State var timer: Timer? = nil
+    @State var now: Date = .now
+    
     var body: some View {
         VStack {
             HStack {
@@ -35,6 +38,7 @@ struct TimestampConverterView: View {
                 }, label: {
                     Image(systemName: "gearshape.fill")
                 })
+                Text("\(now)")
                 Spacer()
             }
             
@@ -57,6 +61,22 @@ struct TimestampConverterView: View {
         }
         .padding()
         .navigationTitle("时间转换")
+        .onAppear(perform: self.onAppear)
+        .onDisappear(perform: self.onDisappear)
+    }
+    
+    
+    // MARK: 函数
+    func onAppear() {
+        NSLog("开始计时")
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in 
+            now = Date.now
+        }
+    }
+    
+    func onDisappear() {
+        NSLog("停止计时")
+        timer?.invalidate()
     }
 }
 
