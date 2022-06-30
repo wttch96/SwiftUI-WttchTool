@@ -11,11 +11,23 @@ import Foundation
 ///
 /// 菜单
 ///
-struct MenuItem: Identifiable {
+struct MenuItem: Identifiable, Hashable {
     let id: String = UUID().uuidString
     let icon: String?
     let title: String
     let children: [MenuItem]?
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (o1: MenuItem, o2: MenuItem) -> Bool {
+        return o1.id == o2.id
+    }
 
     var view: AnyView?
     
