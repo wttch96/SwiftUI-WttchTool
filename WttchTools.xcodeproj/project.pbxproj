@@ -32,6 +32,7 @@
 		498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */; };
 		499AF1002869B7480047F889 /* EnumPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF0FF2869B7480047F889 /* EnumPicker.swift */; };
 		49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1482D28413D5A0010C6FA /* MenuItemView.swift */; };
+		49A8F3AA286EE46C009B427A /* RandomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8F3A9286EE46C009B427A /* RandomUtil.swift */; };
 		49D4B8A42863107900D3AD07 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49D4B8A32863107900D3AD07 /* CryptoSwift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTextButton.swift; sourceTree = "<group>"; };
 		499AF0FF2869B7480047F889 /* EnumPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPicker.swift; sourceTree = "<group>"; };
 		49A1482D28413D5A0010C6FA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		49A8F3A9286EE46C009B427A /* RandomUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				49886201283F991B005826A1 /* StringExtension.swift */,
+				49A8F3A9286EE46C009B427A /* RandomUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */,
 				495C77CB2854F78B001C393F /* ToPasteboardButton.swift in Sources */,
 				496E0942283E6CA400DAD8BE /* ContentView.swift in Sources */,
+				49A8F3AA286EE46C009B427A /* RandomUtil.swift in Sources */,
 				498861FD283F74D2005826A1 /* TextEditorView.swift in Sources */,
 				496E0940283E6CA400DAD8BE /* WttchToolsApp.swift in Sources */,
 			);

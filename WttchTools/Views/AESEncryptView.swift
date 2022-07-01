@@ -12,15 +12,15 @@ import CryptoSwift
 /// AES 加密模式
 ///
 enum AESMode: String, PickerItem {
-    // 电码本模式，分组单独加密
+    // 电码本模式，分组单独加密, 不需要 iv
     case ecb = "ECB"
-    // 密码分组链接
+    // 密码分组链接, iv 大小必须和块大小一致
     case cbc = "CBC"
-    // 计算器模式
+    // 计算器模式, iv 大小必须和块大小一致
     case ctr = "CTR"
-    // 输出反馈模式
+    // 输出反馈模式, iv 大小必须和块大小一致
     case ofb = "OFB"
-    // 密码反馈模式
+    // 密码反馈模式, iv 大小须和块大小一致或者 cfb8 模式(默认为cfb128模式)和 AES 块大小一致(128)
     case cfb = "CFB"
     
     var value: String {
@@ -50,8 +50,9 @@ enum PaddingMode: String, PickerItem {
     ///
     var padding: Padding {
         switch self {
-            case .noPadding: return .noPadding
             case .zeroPadding: return .zeroPadding
+            // 不需要填充, 也就意味着你对你的数据分割完全信任, 如果分割失败将会报错
+            case .noPadding: return .noPadding
             case .pkcs7: return .pkcs7
             case .pkcs5: return .pkcs5
             case .iso10126: return .iso10126
@@ -80,9 +81,9 @@ struct AESEncryptView: View {
             VSplitView {
                 VStack {
                     HStack {
-                        EnumPicker(title:"加密模式", selection: $aesMode)
-                            .frame(maxWidth: 200)
                         EnumPicker(title:"填充模式", selection: $paddingMode)
+                            .frame(maxWidth: 200)
+                        EnumPicker(title:"加密模式", selection: $aesMode)
                             .frame(maxWidth: 200)
                         if aesMode != .ecb {
                             TextField("iv偏移量", text: $ivText)
@@ -110,27 +111,9 @@ struct AESEncryptView: View {
                             }
                     }
                     HStack {
-                        Button("加密", action: {
-                            do {
-                                let key = [UInt8](keyText.bytes)
-                                let iv = [UInt8](ivText.bytes)
-                                let aes = try AES(key: key,
-                                                  blockMode: CBC(iv: iv), padding: paddingMode.padding)
-                                let v = try aes.encrypt([UInt8](inputText.bytes))
-                                outputText = v.map{
-                                        String(format: "%02hhx", $0)
-                                     }.joined()
-                            } catch {
-                                switch (error) {
-                                case AES.Error.invalidKeySize:
-                                    keyValid = false
-                                    NSLog("invalidKeySize")
-                                default:
-                                    NSLog(error.localizedDescription)
-                                }
-                            }
-                        })
-                        
+                        Button("加密", action: encrypt)
+                        Button("随机", action: example)
+                        Spacer()
                     }
                     TextEditorView(text: $inputText)
                 }
@@ -147,6 +130,61 @@ struct AESEncryptView: View {
                 .padding()
             }
         }
+    }
+    
+    // MARK: 方法
+    
+    ///
+    /// 根据选择的模式和 iv 生成 BlockMode
+    ///
+    private var blockMode: BlockMode {
+        let iv = [UInt8](ivText.bytes)
+        switch aesMode {
+            case .cbc:
+                return CBC(iv: iv)
+            case .cfb:
+                return CFB(iv: iv)
+            case .ctr:
+                return CTR(iv: iv)
+            case .ecb:
+                return ECB()
+            case .ofb:
+                return OFB(iv: iv)
+        }
+    }
+    
+    ///
+    /// 加密
+    ///
+    private func encrypt() {
+        do {
+            let key = [UInt8](keyText.bytes)
+            let aes = try AES(key: key,
+                              blockMode: blockMode, padding: paddingMode.padding)
+            let resoultData = try aes.encrypt([UInt8](inputText.bytes))
+            outputText = resoultData.map{
+                String(format: "%02hhx", $0)
+            }.joined()
+        } catch {
+            switch (error) {
+            case AES.Error.invalidKeySize:
+                keyValid = false
+                NSLog("invalidKeySize")
+            default:
+                NSLog(error.localizedDescription)
+            }
+        }
+    }
+
+    ///
+    /// 举个栗子
+    ///
+    private func example() {
+        let blockSize = Int(arc4random_uniform(3) * 8 + 16)
+        keyText = String.random(length: blockSize)
+        inputText = String.random(length: blockSize)
+        ivText = String.random(length: 16)
+        encrypt()
     }
 }
 
