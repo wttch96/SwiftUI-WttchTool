@@ -91,24 +91,14 @@ struct AESEncryptView: View {
                         Spacer()
                     }
                     HStack {
-                        TextField("密钥", text: $keyText)
+                        Text("密钥")
+                        TextField("请输入密钥", text: $keyText)
                             .foregroundColor(keyValid ? .green : .red)
-                            .onChange(of: keyText) { value in
-                                let len =  value.lengthOfBytes(using: .utf8)
-                                switch (len * 8) {
-                                case 128:
-                                    keyLen = 128
-                                    keyValid = true
-                                case 192:
-                                    keyLen = 192
-                                    keyValid = true
-                                case 256:
-                                    keyLen = 256
-                                    keyValid = true
-                                default:
-                                    keyValid = false
-                                }
-                            }
+                            .frame(maxWidth: 320)
+                            .onChange(of: keyText, perform: onKeyTextChange)
+                        Text("\(keyValid ? "长度:\(keyLen)" : "长度不符合要求")")
+                            .foregroundColor(keyValid ? .green : .red)
+                        Spacer()
                     }
                     HStack {
                         Button("加密", action: encrypt)
@@ -121,7 +111,6 @@ struct AESEncryptView: View {
                 VStack {
                     TextEditorView(text: $outputText)
                     HStack {
-                        Text("\(keyValid ? "当前密码长度:\(keyLen)" : "")")
                         Text("\(keyValid ? "" : "密码长度不符合要求")")
                             .foregroundColor(.red)
                         Spacer()
@@ -153,6 +142,29 @@ struct AESEncryptView: View {
         }
     }
     
+    
+    ///
+    /// 监听密钥文本变化
+    ///
+    /// - Parameter value: 密钥文本
+    ///
+    private func onKeyTextChange(value: String) {
+        let len =  value.lengthOfBytes(using: .utf8)
+        switch (len * 8) {
+        case 128:
+            keyLen = 128
+            keyValid = true
+        case 192:
+            keyLen = 192
+            keyValid = true
+        case 256:
+            keyLen = 256
+            keyValid = true
+        default:
+            keyValid = false
+        }
+    }
+    
     ///
     /// 加密
     ///
@@ -173,6 +185,7 @@ struct AESEncryptView: View {
             default:
                 NSLog(error.localizedDescription)
             }
+            outputText = ""
         }
     }
 
