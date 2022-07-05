@@ -65,16 +65,30 @@ enum PaddingMode: String, PickerItem {
 /// AES 加密
 ///
 struct AESEncryptView: View {
-    
+    // 加密/解密输入
     @State var inputText = ""
+    // 加密/解密输出
     @State var outputText = ""
+    // 密钥文本
     @State var keyText = ""
+    // iv文本
     @State var ivText = ""
+    // 加密模式
     @State var aesMode = AESMode.ecb
+    // 填充模式
     @State var paddingMode = PaddingMode.noPadding
-    
-    @State var keyLen = 0
+    // key长度
+    @State var keyBitSize = 0
+    // key是否校验
     @State var keyValid = false
+    // iv 是否校验
+    @State var ivValided = false
+    // iv 长度
+    @State var ivBitSize = 0
+    // padding mode 是否校验
+    @State var paddingModeValided = true
+    
+    private let encode = String.Encoding.utf8
     
     var body: some View {
         GeometryReader { geometry in
@@ -84,9 +98,16 @@ struct AESEncryptView: View {
                         EnumPicker(title:"填充模式", selection: $paddingMode)
                             .frame(maxWidth: 200)
                         EnumPicker(title:"加密模式", selection: $aesMode)
-                            .frame(maxWidth: 200)
+                            .frame(maxWidth: 120)
                         if aesMode != .ecb {
+                            Text("iv")
                             TextField("iv偏移量", text: $ivText)
+                                .frame(maxWidth: 140)
+                                .onChange(of: ivText, perform: validIvText)
+                            if !ivValided {
+                                Text("iv 必须128位，当前\(ivBitSize)")
+                                    .foregroundColor(.red)
+                            }
                         }
                         Spacer()
                     }
@@ -94,9 +115,9 @@ struct AESEncryptView: View {
                         Text("密钥")
                         TextField("请输入密钥", text: $keyText)
                             .foregroundColor(keyValid ? .green : .red)
-                            .frame(maxWidth: 320)
-                            .onChange(of: keyText, perform: onKeyTextChange)
-                        Text("\(keyValid ? "长度:\(keyLen)" : "长度不符合要求")")
+                            .frame(maxWidth: 360)
+                            .onChange(of: keyText, perform: validKeyText )
+                        Text("\(keyValid ? "长度:\(keyBitSize)" : "长度不符合要求")")
                             .foregroundColor(keyValid ? .green : .red)
                         Spacer()
                     }
@@ -111,7 +132,7 @@ struct AESEncryptView: View {
                 VStack {
                     TextEditorView(text: $outputText)
                     HStack {
-                        Text("\(keyValid ? "" : "密码长度不符合要求")")
+                        Text("\(keyValid ? "" : "密码长度不符合要求")" + "\(paddingModeValided ? "noPadding必须使用128的整数倍位数作为输入" : "")")
                             .foregroundColor(.red)
                         Spacer()
                     }
@@ -148,17 +169,17 @@ struct AESEncryptView: View {
     ///
     /// - Parameter value: 密钥文本
     ///
-    private func onKeyTextChange(value: String) {
-        let len =  value.lengthOfBytes(using: .utf8)
+    private func validKeyText(value: String) {
+        let len =  value.lengthOfBytes(using: encode)
         switch (len * 8) {
         case 128:
-            keyLen = 128
+            keyBitSize = 128
             keyValid = true
         case 192:
-            keyLen = 192
+            keyBitSize = 192
             keyValid = true
         case 256:
-            keyLen = 256
+            keyBitSize = 256
             keyValid = true
         default:
             keyValid = false
@@ -166,26 +187,46 @@ struct AESEncryptView: View {
     }
     
     ///
+    /// 校验 iv 文本
+    ///
+    /// - Parameter value: iv 文本
+    ///
+    private func validIvText(value: String) {
+        ivBitSize = value.lengthOfBytes(using: encode)
+        ivValided = ivBitSize * 8 == 128
+    }
+    
+    ///
+    /// 检验 padding mode, 主要是 noPadding 必须保证输入是 128 的整倍数
+    ///
+    private func validPaddingMod() {
+        paddingModeValided = (paddingMode == .noPadding && ivBitSize % 128 != 0)
+    }
+    
+    ///
     /// 加密
     ///
     private func encrypt() {
-        do {
-            let key = [UInt8](keyText.bytes)
-            let aes = try AES(key: key,
-                              blockMode: blockMode, padding: paddingMode.padding)
-            let resoultData = try aes.encrypt([UInt8](inputText.bytes))
-            outputText = resoultData.map{
-                String(format: "%02hhx", $0)
-            }.joined()
-        } catch {
-            switch (error) {
-            case AES.Error.invalidKeySize:
-                keyValid = false
-                NSLog("invalidKeySize")
-            default:
-                NSLog(error.localizedDescription)
+        validPaddingMod()
+        if paddingModeValided {
+            do {
+                let key = [UInt8](keyText.bytes)
+                let aes = try AES(key: key,
+                                  blockMode: blockMode, padding: paddingMode.padding)
+                let resoultData = try aes.encrypt([UInt8](inputText.bytes))
+                outputText = resoultData.map{
+                    String(format: "%02hhx", $0)
+                }.joined()
+            } catch {
+                switch (error) {
+                case AES.Error.invalidKeySize:
+                    keyValid = false
+                    NSLog("invalidKeySize")
+                default:
+                    NSLog(error.localizedDescription)
+                }
+                outputText = ""
             }
-            outputText = ""
         }
     }
 

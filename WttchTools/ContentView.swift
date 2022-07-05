@@ -11,7 +11,7 @@ import AppKit
 
 struct ContentView: View {
     @State var selectedItem: MenuItem? = nil
-    @State var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State var columnVisibility: NavigationSplitViewVisibility = .all
     
     var body: some View {
         NavigationSplitView(
