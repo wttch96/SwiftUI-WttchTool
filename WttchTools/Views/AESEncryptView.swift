@@ -84,7 +84,7 @@ struct AESEncryptView: View {
     // iv 是否校验
     @State var ivValided = false
     // iv 长度
-    @State var ivBitSize = 0
+    @State var ivByteSize = 0
     // padding mode 是否校验
     @State var paddingModeValided = true
     
@@ -105,7 +105,7 @@ struct AESEncryptView: View {
                                 .frame(maxWidth: 140)
                                 .onChange(of: ivText, perform: validIvText)
                             if !ivValided {
-                                Text("iv 必须128位，当前\(ivBitSize)")
+                                Text("iv 必须128位，当前\(ivByteSize)")
                                     .foregroundColor(.red)
                             }
                         }
@@ -127,15 +127,16 @@ struct AESEncryptView: View {
                         Spacer()
                     }
                     TextEditorView(text: $inputText)
+                        .onChange(of: inputText, perform: validPaddingMod)
+                    HStack {
+                        Text("\(!paddingModeValided ? "noPadding必须使用128的整数倍位数作为输入" : "")")
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
                 }
                 .padding()
                 VStack {
                     TextEditorView(text: $outputText)
-                    HStack {
-                        Text("\(keyValid ? "" : "密码长度不符合要求")" + "\(paddingModeValided ? "noPadding必须使用128的整数倍位数作为输入" : "")")
-                            .foregroundColor(.red)
-                        Spacer()
-                    }
                 }
                 .padding()
             }
@@ -192,22 +193,21 @@ struct AESEncryptView: View {
     /// - Parameter value: iv 文本
     ///
     private func validIvText(value: String) {
-        ivBitSize = value.lengthOfBytes(using: encode)
-        ivValided = ivBitSize * 8 == 128
+        ivByteSize = value.lengthOfBytes(using: encode)
+        ivValided = ivByteSize * 8 == 128
     }
     
     ///
     /// 检验 padding mode, 主要是 noPadding 必须保证输入是 128 的整倍数
     ///
-    private func validPaddingMod() {
-        paddingModeValided = (paddingMode == .noPadding && ivBitSize % 128 != 0)
+    private func validPaddingMod(value: String) {
+        paddingModeValided = paddingMode != .noPadding || value.lengthOfBytes(using: encode) % (keyBitSize / 8) == 0
     }
     
     ///
     /// 加密
     ///
     private func encrypt() {
-        validPaddingMod()
         if paddingModeValided {
             do {
                 let key = [UInt8](keyText.bytes)
