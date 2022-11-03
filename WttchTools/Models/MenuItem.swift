@@ -8,6 +8,8 @@
 import SwiftUI
 import Foundation
 
+import WttchCoreLibrary
+
 ///
 /// 菜单
 ///
@@ -57,7 +59,15 @@ let toolMenus: [MenuItem] = [
     ]),
     MenuItem(icon: "option", title: "编码", children: [
         MenuItem(icon: "list.dash", title: "Base64", view: Base64View()),
-        MenuItem(icon: "list.dash", title: "URL", view: Text("URL")),
+        MenuItem(icon: "list.dash", title: "URL", view: VStack {
+            HStack {
+                ForEach(80..<100) { i
+                    in
+                    WebImage(url: "https://icon.jx3box.com/icon/25\(i).png")
+                        .frame(width: 40, height: 40)
+                }
+            }
+        }),
         MenuItem(icon: "list.dash", title: "URI", view: Text("URI"))
     ]),
     MenuItem(title: "摘要", children: [
@@ -68,7 +78,7 @@ let toolMenus: [MenuItem] = [
         MenuItem(icon: "list.dash", title: "散列/哈希", view: Text("SHA"))
     ]),
     MenuItem(title: "对称加密", children: [
-        MenuItem(icon: "list.dash", title: "AES", view: AESEncryptView()),
+        // MenuItem(icon: "list.dash", title: "AES", view: AESEncryptView()),
         MenuItem(icon: "list.dash", title: "DES", view: Text("DES")),
         MenuItem(icon: "list.dash", title: "RC4", view: Text("RC4")),
         MenuItem(icon: "list.dash", title: "Rabbit", view: Text("Rabbit")),

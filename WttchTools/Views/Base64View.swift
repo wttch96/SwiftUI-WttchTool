@@ -7,6 +7,9 @@
 
 import SwiftUI
 import CryptoKit
+import WttchCoreLibrary
+
+
 
 ///
 /// Base64 编码
@@ -14,7 +17,7 @@ import CryptoKit
 struct Base64View: View {
     
     // MARK: 状态
-    @State var sourceText = ""
+    @State var sourceText: String = ""
     @State var resultText = ""
     @State var keyStr = ""
     @State var showHmac = false
@@ -37,6 +40,8 @@ struct Base64View: View {
                         FromPasteboardButton(text: $sourceText)
                         Spacer()
                         actionPicker
+                    }
+                    .onAppear {
                     }
     //                HStack {
     //                    Toggle("HMAC", isOn: $useHmac)

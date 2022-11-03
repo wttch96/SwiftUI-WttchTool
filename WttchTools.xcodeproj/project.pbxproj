@@ -26,14 +26,13 @@
 		496E095E283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E095D283E6CA500DAD8BE /* WttchToolsUITestsLaunchTests.swift */; };
 		496E096C283E74D600DAD8BE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E096B283E74D600DAD8BE /* MenuItem.swift */; };
 		496E096F283E8D5400DAD8BE /* Base64View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E096E283E8D5400DAD8BE /* Base64View.swift */; };
+		497B0D98291382B8002FBBD8 /* WttchCoreLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 497B0D97291382B8002FBBD8 /* WttchCoreLibrary */; };
 		498861FD283F74D2005826A1 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498861FC283F74D2005826A1 /* TextEditorView.swift */; };
 		498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */; };
-		49886202283F991B005826A1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49886201283F991B005826A1 /* StringExtension.swift */; };
 		498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */; };
 		499AF1002869B7480047F889 /* EnumPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF0FF2869B7480047F889 /* EnumPicker.swift */; };
 		49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1482D28413D5A0010C6FA /* MenuItemView.swift */; };
 		49A8F3AA286EE46C009B427A /* RandomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8F3A9286EE46C009B427A /* RandomUtil.swift */; };
-		49D4B8A42863107900D3AD07 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49D4B8A32863107900D3AD07 /* CryptoSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +57,7 @@
 		4914B2362861ABA100A20B10 /* AESEncryptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESEncryptView.swift; sourceTree = "<group>"; };
 		4946BEEA284FBF8800C4116D /* DigestViewswift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestViewswift.swift; sourceTree = "<group>"; };
 		4946BEEE284FC15F00C4116D /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		495317862912CB8600672D42 /* WttchCoreLibrary */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WttchCoreLibrary; path = ../WttchCoreLibrary; sourceTree = "<group>"; };
 		495C77C22854CE1A001C393F /* ImmediatelyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmediatelyButton.swift; sourceTree = "<group>"; };
 		495C77C42854D145001C393F /* FromPasteboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromPasteboardButton.swift; sourceTree = "<group>"; };
 		495C77C62854E34E001C393F /* RadioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioItem.swift; sourceTree = "<group>"; };
@@ -80,7 +80,6 @@
 		496E096E283E8D5400DAD8BE /* Base64View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64View.swift; sourceTree = "<group>"; };
 		498861FC283F74D2005826A1 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		498861FE283F763B005826A1 /* UnderCaseCamelCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCaseCamelCaseView.swift; sourceTree = "<group>"; };
-		49886201283F991B005826A1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		498BC0A82843D2D500D0BF02 /* SwitchTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTextButton.swift; sourceTree = "<group>"; };
 		499AF0FF2869B7480047F889 /* EnumPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPicker.swift; sourceTree = "<group>"; };
 		49A1482D28413D5A0010C6FA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -92,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D4B8A42863107900D3AD07 /* CryptoSwift in Frameworks */,
+				497B0D98291382B8002FBBD8 /* WttchCoreLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,14 +126,23 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		496016B229137F2400BF4866 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		496E0933283E6CA400DAD8BE = {
 			isa = PBXGroup;
 			children = (
+				495317862912CB8600672D42 /* WttchCoreLibrary */,
 				496E096A283E6CAE00DAD8BE /* README.md */,
 				496E093E283E6CA400DAD8BE /* WttchTools */,
 				496E0950283E6CA500DAD8BE /* WttchToolsTests */,
 				496E095A283E6CA500DAD8BE /* WttchToolsUITests */,
 				496E093D283E6CA400DAD8BE /* Products */,
+				496016B229137F2400BF4866 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,7 +215,6 @@
 		49886200283F990B005826A1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				49886201283F991B005826A1 /* StringExtension.swift */,
 				49A8F3A9286EE46C009B427A /* RandomUtil.swift */,
 			);
 			path = Utils;
@@ -236,10 +243,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				497B0D96291382AD002FBBD8 /* PBXTargetDependency */,
 			);
 			name = WttchTools;
 			packageProductDependencies = (
-				49D4B8A32863107900D3AD07 /* CryptoSwift */,
+				497B0D97291382B8002FBBD8 /* WttchCoreLibrary */,
 			);
 			productName = WttchTools;
 			productReference = 496E093C283E6CA400DAD8BE /* WttchTools.app */;
@@ -314,7 +322,6 @@
 			);
 			mainGroup = 496E0933283E6CA400DAD8BE;
 			packageReferences = (
-				49D4B8A22863107900D3AD07 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = 496E093D283E6CA400DAD8BE /* Products */;
 			projectDirPath = "";
@@ -364,7 +371,6 @@
 				496E096F283E8D5400DAD8BE /* Base64View.swift in Sources */,
 				495C77C72854E34E001C393F /* RadioItem.swift in Sources */,
 				490D7F082850E82C00D7BD7E /* TimestampConverterView.swift in Sources */,
-				49886202283F991B005826A1 /* StringExtension.swift in Sources */,
 				495C77C52854D145001C393F /* FromPasteboardButton.swift in Sources */,
 				4946BEEF284FC15F00C4116D /* TextFieldView.swift in Sources */,
 				495C77C32854CE1A001C393F /* ImmediatelyButton.swift in Sources */,
@@ -411,6 +417,10 @@
 			isa = PBXTargetDependency;
 			target = 496E093B283E6CA400DAD8BE /* WttchTools */;
 			targetProxy = 496E0958283E6CA500DAD8BE /* PBXContainerItemProxy */;
+		};
+		497B0D96291382AD002FBBD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 497B0D95291382AD002FBBD8 /* WttchCoreLibrary */;
 		};
 /* End PBXTargetDependency section */
 
@@ -595,7 +605,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYB5299FCX;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wttch.WttchToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -614,7 +624,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYB5299FCX;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wttch.WttchToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -699,22 +709,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		49D4B8A22863107900D3AD07 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		49D4B8A32863107900D3AD07 /* CryptoSwift */ = {
+		497B0D95291382AD002FBBD8 /* WttchCoreLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49D4B8A22863107900D3AD07 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
-			productName = CryptoSwift;
+			productName = WttchCoreLibrary;
+		};
+		497B0D97291382B8002FBBD8 /* WttchCoreLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WttchCoreLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
