@@ -33,6 +33,9 @@
 		499AF1002869B7480047F889 /* EnumPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499AF0FF2869B7480047F889 /* EnumPicker.swift */; };
 		49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1482D28413D5A0010C6FA /* MenuItemView.swift */; };
 		49A8F3AA286EE46C009B427A /* RandomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8F3A9286EE46C009B427A /* RandomUtil.swift */; };
+		49F020CD29192B620007975A /* JX3Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F020CC29192B620007975A /* JX3Api.swift */; };
+		49F020CF29192D640007975A /* JX3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F020CE29192D640007975A /* JX3View.swift */; };
+		49F020D129196B290007975A /* JX3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F020D029196B290007975A /* JX3Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		499AF0FF2869B7480047F889 /* EnumPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPicker.swift; sourceTree = "<group>"; };
 		49A1482D28413D5A0010C6FA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		49A8F3A9286EE46C009B427A /* RandomUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUtil.swift; sourceTree = "<group>"; };
+		49F020CC29192B620007975A /* JX3Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JX3Api.swift; sourceTree = "<group>"; };
+		49F020CE29192D640007975A /* JX3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JX3View.swift; sourceTree = "<group>"; };
+		49F020D029196B290007975A /* JX3Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JX3Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 		496E093E283E6CA400DAD8BE /* WttchTools */ = {
 			isa = PBXGroup;
 			children = (
+				49F020CB29192B460007975A /* JX3 */,
 				490D7F092851D9F800D7BD7E /* Components */,
 				49886203283FD2AC005826A1 /* Models */,
 				49886200283F990B005826A1 /* Utils */,
@@ -227,6 +234,16 @@
 				495C77C62854E34E001C393F /* RadioItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		49F020CB29192B460007975A /* JX3 */ = {
+			isa = PBXGroup;
+			children = (
+				49F020CC29192B620007975A /* JX3Api.swift */,
+				49F020CE29192D640007975A /* JX3View.swift */,
+				49F020D029196B290007975A /* JX3Util.swift */,
+			);
+			path = JX3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,8 +396,11 @@
 				495C77C92854EA97001C393F /* RadioPicker.swift in Sources */,
 				498861FF283F763B005826A1 /* UnderCaseCamelCaseView.swift in Sources */,
 				498BC0A92843D2D500D0BF02 /* SwitchTextButton.swift in Sources */,
+				49F020CF29192D640007975A /* JX3View.swift in Sources */,
 				49A1482E28413D5A0010C6FA /* MenuItemView.swift in Sources */,
+				49F020D129196B290007975A /* JX3Util.swift in Sources */,
 				495C77CB2854F78B001C393F /* ToPasteboardButton.swift in Sources */,
+				49F020CD29192B620007975A /* JX3Api.swift in Sources */,
 				496E0942283E6CA400DAD8BE /* ContentView.swift in Sources */,
 				49A8F3AA286EE46C009B427A /* RandomUtil.swift in Sources */,
 				498861FD283F74D2005826A1 /* TextEditorView.swift in Sources */,

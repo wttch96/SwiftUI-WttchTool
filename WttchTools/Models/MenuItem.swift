@@ -53,6 +53,9 @@ struct MenuItem: Identifiable, Hashable {
 /// 菜单的目录结构
 ///
 let toolMenus: [MenuItem] = [
+    MenuItem(icon: "text.alignleft", title: "剑网三", children: [
+        MenuItem(icon: "text.alignleft", title: "物品查询", view: JX3View()),
+    ]),
     MenuItem(icon: "text.alignleft", title: "文本处理", children: [
         MenuItem(icon: "clock.fill", title: "时间转换", view: TimestampConverterView()),
         MenuItem(icon: "xmark", title: "下划线/驼峰互转", view: UnderCaseCamelCaseView())
@@ -60,15 +63,21 @@ let toolMenus: [MenuItem] = [
     MenuItem(icon: "option", title: "编码", children: [
         MenuItem(icon: "list.dash", title: "Base64", view: Base64View()),
         MenuItem(icon: "list.dash", title: "URL", view: VStack {
-            HStack {
-                ForEach(80..<100) { i
-                    in
-                    WebImage(url: "https://icon.jx3box.com/icon/25\(i).png")
-                        .frame(width: 40, height: 40)
+            ScrollView(.vertical) {
+                VStack {
+                    ForEach(10..<30) { r in
+                        HStack {
+                            ForEach(80..<100) { i
+                                in
+                                WebImage(url: "https://icon.jx3box.com/icon/\(r)\(i).png")
+                                    .frame(width: 40, height: 40)
+                            }
+                        }
+                    }
                 }
             }
         }),
-        MenuItem(icon: "list.dash", title: "URI", view: Text("URI"))
+        MenuItem(icon: "list.dash", title: "URI", view: Text("已用缓存大小:\(FileCacheUtil.getCacheFileSize())"))
     ]),
     MenuItem(title: "摘要", children: [
         // md5, hmacMD5
